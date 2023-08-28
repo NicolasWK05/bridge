@@ -1,0 +1,11 @@
+Model Information:
+* title:	wooden bridge
+* source:	https://sketchfab.com/3d-models/wooden-bridge-666f79b2506740b78170892a666879c5
+* author:	ehsan.avard (https://sketchfab.com/ehsan.avard)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "wooden bridge" (https://sketchfab.com/3d-models/wooden-bridge-666f79b2506740b78170892a666879c5) by ehsan.avard (https://sketchfab.com/ehsan.avard) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
