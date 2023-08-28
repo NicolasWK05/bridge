@@ -1,44 +1,18 @@
 import * as THREE from 'https://unpkg.com/three@0.155.0/build/three.module.js';
 import { GLTFLoader } from 'https://unpkg.com/three@0.155.0/examples/jsm/loaders/GLTFLoader.js';
+import { OrbitControls } from 'https://unpkg.com/three@0.155.0/examples/jsm/controls/OrbitControls';
+
+const canvasContainer = document.getElementById('canvas-container');
 
 // Creating a scene
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+camera.position.z = 5;
 
 // Creating a renderer
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
-document.body.appendChild( renderer.domElement );
-
-// Creating a cube
-
-const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-const cube = new THREE.Mesh( geometry, material );
-
-// scene.add( cube );
-
-
-function rotateAboutPoint(obj, point, axis, theta, pointIsWorld) {
-    pointIsWorld = (pointIsWorld === undefined)? false : pointIsWorld;
-
-    if(pointIsWorld){
-        obj.parent.localToWorld(obj.position); // compensate for world coordinate
-    }
-
-    obj.position.sub(point); // remove the offset
-    obj.position.applyAxisAngle(axis, theta); // rotate the POSITION
-    obj.position.add(point); // re-add the offset
-
-    if(pointIsWorld){
-        obj.parent.worldToLocal(obj.position); // undo world coordinates compensation
-    }
-
-    obj.rotateOnAxis(axis, theta); // rotate the OBJECT
-}
-
-
-
+canvasContainer.appendChild( renderer.domElement );
 
 let model = undefined;
 
@@ -57,42 +31,36 @@ loader.load('models/wooden_bridge/scene.gltf', function(gltf) {
     // Scale the model down
     model.scale.set(0.2, 0.2, 0.2);
 
+    // Adjust the position of the model
+    const bbox = new THREE.Box3().setFromObject(model);
+    const center = bbox.getCenter(new THREE.Vector3());
+    model.position.sub(center);
+
 
     scene.add(model);
 }, undefined, function(error) {
     console.error(error);
 });
 
+// Ambient light
+const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
+scene.add(ambientLight);
+
+// Directional light
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+directionalLight.position.set(0, 1, 1).normalize();
+scene.add(directionalLight);
 
 
-// get length of model
-if(model) {
-    const box = new THREE.Box3().setFromObject(model);
-    const length = box.max.x - box.min.x;
-    // const height = box.max.y - box.min.y;
-    // const width = box.max.z - box.min.z;
-
-    console.log({length});
-}
-
-
-
-// Create center point
-const centerPoint = new THREE.Vector3(2.5, 0, 0);
-const axis = new THREE.Vector3(0, 1, 0);
-const theta = Math.PI / 50;
-const pointIsWorld = false;
-
-
-camera.position.z = 5;
+// Controls
+const controls = new OrbitControls( camera, renderer.domElement );
+controls.enableDamping = true;
+controls.dampingFactor = 0.1;
     
 // Rendering the scene
 function animate() {
     requestAnimationFrame( animate );
-
-    if (model) {
-        rotateAboutPoint(model, centerPoint, axis, theta, pointIsWorld);
-    }
+    controls.update();
     renderer.render( scene, camera );
 }
 
