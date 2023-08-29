@@ -54,7 +54,15 @@ loader.load('models/davinci_bridge/bridge4.gltf', function(gltf) {
     });
 
     // Scale the model down
-    model.scale.set(1, 1, 1);
+    console.log(document.body.clientWidth)
+    if(document.body.clientWidth < 600) {
+        console.log("mobile")
+        model.scale.set(0.5, 0.5, 0.5);
+        camera.fov = 100.0;
+        console.log(camera.fov)
+    }
+
+    
 
     // Adjust the position of the model
     const bbox = new THREE.Box3().setFromObject(model);
