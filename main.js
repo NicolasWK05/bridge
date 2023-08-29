@@ -7,13 +7,36 @@ const canvasContainer = document.getElementById('canvas-container');
 // Creating a scene
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, parent.innerWidth / parent.innerHeight, 0.1, 1000 );
-camera.position.z = 5;
+camera.position.z = 3.5;
+camera.position.y = 0.5;
+camera.rotation.x = -0.2;
+
+// Scene background
+scene.background = new THREE.Color("#1e1e21")
 
 // Creating a renderer
 const renderer = new THREE.WebGLRenderer();
-renderer.setSize( canvasContainer.clientWidth, canvasContainer.clientHeight );
+renderer.setSize( 526, 360 );
 canvasContainer.appendChild( renderer.domElement );
 
+
+function rotateAboutPoint(obj, point, axis, theta, pointIsWorld) {
+    pointIsWorld = (pointIsWorld === undefined)? false : pointIsWorld;
+
+    if(pointIsWorld){
+        obj.parent.localToWorld(obj.position); // compensate for world coordinate
+    }
+
+    obj.position.sub(point); // remove the offset
+    obj.position.applyAxisAngle(axis, theta); // rotate the POSITION
+    obj.position.add(point); // re-add the offset
+
+    if(pointIsWorld){
+        obj.parent.worldToLocal(obj.position); // undo world coordinates compensation
+    }
+
+    obj.rotateOnAxis(axis, theta); // rotate the OBJECT
+}
 
 let model = undefined;
 
@@ -54,14 +77,24 @@ scene.add(directionalLight);
 
 
 // Controls
-const controls = new OrbitControls( camera, renderer.domElement );
-controls.enableDamping = true;
-controls.dampingFactor = 0.1;
+// const controls = new OrbitControls( camera, renderer.domElement );
+// controls.enableDamping = true;
+// controls.dampingFactor = 0.1;
     
+
+const centerPoint = new THREE.Vector3(0, 0, 0);
+const axis = new THREE.Vector3(0, 1, 0);
+const theta = 0.01;
+const pointIsWorld = false;
+
 // Rendering the scene
 function animate() {
     requestAnimationFrame( animate );
-    controls.update();
+    // controls.update();
+
+    if (model) {
+        rotateAboutPoint(model, centerPoint, axis, theta, pointIsWorld);
+    }
     renderer.render( scene, camera );
 }
 
