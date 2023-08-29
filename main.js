@@ -41,19 +41,20 @@ function rotateAboutPoint(obj, point, axis, theta, pointIsWorld) {
 let model = undefined;
 
 const loader = new GLTFLoader();
-loader.load('models/wooden_bridge/scene.gltf', function(gltf) {
-    console.log(gltf.scene)
+loader.load('models/davinci_bridge/bridge4.gltf', function(gltf) {
+    console.log({gltf})
     model = gltf.scene;
 
     // Add the texture to the model
     model.traverse((o) => {
         if (o.isMesh) {
+            console.log({o})
             o.material = new THREE.MeshBasicMaterial({ map: o.material.map });
         }
     });
 
     // Scale the model down
-    model.scale.set(0.2, 0.2, 0.2);
+    model.scale.set(1, 1, 1);
 
     // Adjust the position of the model
     const bbox = new THREE.Box3().setFromObject(model);
@@ -72,7 +73,8 @@ scene.add(ambientLight);
 
 // Directional light
 const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
-directionalLight.position.set(0, 1, 1).normalize();
+directionalLight.position.set(4, 1, 1);
+directionalLight.castShadow = true;
 scene.add(directionalLight);
 
 
