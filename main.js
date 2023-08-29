@@ -57,9 +57,9 @@ loader.load('models/davinci_bridge/bridge4.gltf', function(gltf) {
     console.log(document.body.clientWidth)
     if(document.body.clientWidth < 600) {
         console.log("mobile")
-        model.scale.set(0.6, 1, 1);
+        model.scale.set(0.5, 1, 0.5);
         camera.position.z = 4;
-        camera.fov = 85.0;
+        camera.fov = 75.0;
         camera.updateProjectionMatrix();
         console.log(camera.fov)
     }
