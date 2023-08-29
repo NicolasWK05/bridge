@@ -16,7 +16,7 @@ scene.background = new THREE.Color("#1e1e21")
 
 // Creating a renderer
 const renderer = new THREE.WebGLRenderer();
-renderer.setSize( 526, 360 );
+renderer.setSize( canvasContainer.clientWidth, canvasContainer.clientHeight );
 canvasContainer.appendChild( renderer.domElement );
 
 
