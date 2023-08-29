@@ -6,13 +6,14 @@ const canvasContainer = document.getElementById('canvas-container');
 
 // Creating a scene
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+const camera = new THREE.PerspectiveCamera( 75, parent.innerWidth / parent.innerHeight, 0.1, 1000 );
 camera.position.z = 5;
 
 // Creating a renderer
 const renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth, window.innerHeight );
+renderer.setSize( canvasContainer.clientWidth, canvasContainer.clientHeight );
 canvasContainer.appendChild( renderer.domElement );
+
 
 let model = undefined;
 
