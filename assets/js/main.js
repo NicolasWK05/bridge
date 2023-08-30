@@ -46,7 +46,7 @@ let model = undefined;
 
 const loader = new GLTFLoader();
 loader.load(
-  "../../assets/models/davinci_bridge/bridge4.gltf",
+  "./assets/models/davinci_bridge/bridge4.gltf",
   function (gltf) {
     console.log({ gltf });
     model = gltf.scene;
