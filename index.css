@@ -57,7 +57,7 @@ body {
 }
 
 .container img {
-  height: fit-content;
+  width: 25vw;
   padding-left: 5%;
   padding-right: 5%;
 }
@@ -120,15 +120,21 @@ body {
 
 .tekst-fr ul {
   float: right;
+  text-align: left;
   width: 50%;
   font-size: 15px;
 }
 
 .center {
+  
   display: flex;
   justify-content: center;
   text-align: center;
   padding-bottom: 20px;
+}
+
+.center img{
+  width: fit-content;
 }
 
 @media only screen and (max-width: 600px) {
@@ -149,6 +155,7 @@ body {
     float: none !important;
     text-align: center;
     height: fit-content;
+    overflow: hidden;
   }
   
   .tekst-fl {
@@ -156,6 +163,7 @@ body {
     float: none !important;
     text-align: center;
     height: fit-content;
+    overflow: hidden;
   }
 
   .tekst-fl p {
@@ -167,6 +175,18 @@ body {
   .tekst-fr p {
     float: none;
     width: 100%;
+    font-size: 15px;
+  }
+
+  .tekst-fl ul {
+    float: none;
+    width: 85%;
+    font-size: 15px;
+  }
+  
+  .tekst-fr ul {
+    float: none;
+    width: 85%;
     font-size: 15px;
   }
 
