@@ -111,14 +111,13 @@ body {
 }
 
 .center {
-  
   display: flex;
   justify-content: center;
   text-align: center;
   padding-bottom: 20px;
 }
 
-.center img{
+.center img {
   width: fit-content;
   height: 50vh;
 }
@@ -167,7 +166,7 @@ body {
     overflow: hidden;
     padding-bottom: 3%;
   }
-  
+
   .tekst-fl {
     width: 100vw;
     float: none !important;
@@ -182,7 +181,7 @@ body {
     width: 100%;
     font-size: 15px;
   }
-  
+
   .tekst-fr p {
     float: none;
     width: 100%;
@@ -196,7 +195,7 @@ body {
     text-align: left;
     padding-bottom: 3%;
   }
-  
+
   .tekst-fr ul {
     float: none;
     width: 85%;
