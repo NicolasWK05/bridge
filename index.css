@@ -112,6 +112,18 @@ body {
   font-size: 15px;
 }
 
+.tekst-fl ul {
+  float: left;
+  width: 50%;
+  font-size: 15px;
+}
+
+.tekst-fr ul {
+  float: right;
+  width: 50%;
+  font-size: 15px;
+}
+
 .center {
   display: flex;
   justify-content: center;
