@@ -48,26 +48,21 @@ const loader = new GLTFLoader();
 loader.load(
   "./assets/models/davinci_bridge/bridge4.gltf",
   function (gltf) {
-    console.log({ gltf });
     model = gltf.scene;
 
     // Add the texture to the model
     model.traverse((o) => {
       if (o.isMesh) {
-        console.log({ o });
         o.material = new THREE.MeshBasicMaterial({ map: o.material.map });
       }
     });
 
     // Scale the model down
-    console.log(document.body.clientWidth);
     if (document.body.clientWidth < 600) {
-      console.log("mobile");
       model.scale.set(0.5, 1, 0.5);
       camera.position.z = 4;
       camera.fov = 75.0;
       camera.updateProjectionMatrix();
-      console.log(camera.fov);
     }
 
     // Adjust the position of the model
