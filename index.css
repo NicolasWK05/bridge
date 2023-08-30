@@ -52,6 +52,7 @@ body {
   float: right;
   text-align: right;
   font-style: normal;
+  padding-bottom: 3%;
 }
 
 .tekst-fl {
@@ -60,6 +61,7 @@ body {
   float: left;
   text-align: left;
   font-style: normal;
+  padding-bottom: 3%;
 }
 
 .tekst-fl h1 {
@@ -80,6 +82,18 @@ body {
   float: right;
   width: 50%;
   font-size: 15px;
+}
+
+.tekst-fl img {
+  float: right;
+  height: 80%;
+  width: fit-content;
+}
+
+.tekst-fr img {
+  float: left;
+  height: 80%;
+  width: fit-content;
 }
 
 .tekst-fl ul {
@@ -106,6 +120,7 @@ body {
 
 .center img{
   width: fit-content;
+  height: 50vh;
 }
 
 @media only screen and (max-width: 600px) {
@@ -150,6 +165,7 @@ body {
     text-align: center;
     height: fit-content;
     overflow: hidden;
+    padding-bottom: 3%;
   }
   
   .tekst-fl {
@@ -158,6 +174,7 @@ body {
     text-align: center;
     height: fit-content;
     overflow: hidden;
+    padding-bottom: 3%;
   }
 
   .tekst-fl p {
@@ -177,6 +194,7 @@ body {
     width: 85%;
     font-size: 15px;
     text-align: left;
+    padding-bottom: 3%;
   }
   
   .tekst-fr ul {
@@ -184,6 +202,7 @@ body {
     width: 85%;
     font-size: 15px;
     text-align: left;
+    padding-bottom: 3%;
   }
 
   .timeline {
